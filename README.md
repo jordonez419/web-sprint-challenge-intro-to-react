@@ -12,11 +12,11 @@ You are not allowed to collaborate during the sprint challenge.
 
 ## Project Set Up
 
-- [ ] Fork and clone the repo. Delete your old fork from Github first if you are repeating this Unit.
-- [ ] Open the assignment in Canvas and click on the "Set up git" option.
-- [ ] Follow instructions to set up Codegrade's Webhook and Deploy Key.
-- [ ] Push your first commit: `git commit --allow-empty -m "first commit" && git push`.
-- [ ] Check to see that Codegrade has accepted your git submission.
+- [ x] Fork and clone the repo. Delete your old fork from Github first if you are repeating this Unit.
+- [ x] Open the assignment in Canvas and click on the "Set up git" option.
+- [ x] Follow instructions to set up Codegrade's Webhook and Deploy Key.
+- [ x] Push your first commit: `git commit --allow-empty -m "first commit" && git push`.
+- [ x] Check to see that Codegrade has accepted your git submission.
 
 For a step-by-step on setting up Codegrade see [this guide.](https://www.notion.so/lambdaschool/Submitting-an-assignment-via-Code-Grade-A-Step-by-Step-Walkthrough-07bd65f5f8364e709ecb5064735ce374)
 
@@ -81,6 +81,12 @@ After finishing your required elements, you can push your work further. These go
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What is React JS and what problems does it solve? Support your answer with concepts introduced in class and from your personal research on the web.
+React JS is a front end frame work, it solves the answer of websites becoming overly complex with massive ammounts of data being used all over the place.
+This is solved by React using components that handle only the data that pertains to them, and therefore giving us a re-usable and dynamic piece of code we can use anywhere.
 1. Describe component state.
+Component state, is the state of the data right now. For example the score of a football game could be considered the state of the game. We use state to initialize our data, and to
+only manipulate the most current state of the data source rather mutating the original array or database
 1. Describe props.
+Props are basically variables you pass down from component to component. Meaning, in one place something is defined (usually from an API call), and then we give names (variables) to those pieces of data we want to use, and then we pass those names to the components that have use for that data. They get destructed from props inside that component, and are now ready to use/ be passed down to another component
 1. What are side effects, and how do you sync effects in a React component to changes of certain state or props?
+Side effects are anything that happens outside of our UI, so an API call is a side effect. We can sync a side effect to a component state by passing in a dependency array as the second argument to the effect hook.

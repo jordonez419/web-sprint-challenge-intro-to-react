@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Character from './Character'
 import styled from 'styled-components'
-import axios from 'axios'
+
 
 
 
@@ -22,13 +22,13 @@ const Characters = (props) => {
         <div>
             <Header> <h1>STAR WARS</h1></Header>
             {characters.map(person => {
-                return <Character birthYear={person.birth_year} name={person.name} films={person.films} homeworld={person.homeworld} starships={person.starships} />
+                return <Character key={person.url} birthYear={person.birth_year} name={person.name} films={person.films} homeworld={person.homeworld} />
             })}
         </div>
     );
 }
 
-const Header = styled.h3`
+const Header = styled.h1`
 color: #FFE81F;
 font-size: 2rem;
 `

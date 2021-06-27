@@ -1,16 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components'
 import axios from 'axios'
-
-
-// const [planet, setPlanet] = useState([])
-
-// getNameById (id) {
-//     return axios.get('/names/?ids=' + id)
-//         .then(response => {
-//           this.response = response.data
-//           return this.response[0].name
-//         })
 
 
 function yearSetter(value, index) {
@@ -22,7 +12,7 @@ function yearSetter(value, index) {
 
 
 const Character = (props) => {
-    const { birthYear, name, films, homeworld, starships } = props;
+    const { birthYear, name, films, homeworld } = props;
     const [planet, setPlanet] = useState([])
 
 
@@ -32,8 +22,6 @@ const Character = (props) => {
     // Fetch characters from the API in an effect hook. Remember, anytime you have a 
     // side effect in a component, you want to think about which state and/or props it should
     // sync up with, if any.
-
-    // The user is < b > { isLoggedIn? 'currently': 'not' }</b > logged in.
 
 
     axios.get(homeworld)

@@ -11,6 +11,7 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
+
   const [characters, setCharacters] = useState([])
 
   useEffect(() => {
@@ -22,8 +23,13 @@ const App = () => {
 
   return (
     <div className="App">
+      <div id='stars'></div>
+      <div id='stars2'></div>
+      <div id='stars2'></div>
+      <div id='stars3'></div>
       <Characters characters={characters} />
-    </div>
+
+    </div >
   );
 }
 

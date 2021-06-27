@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Character from './Character'
+import styled from 'styled-components'
+import axios from 'axios'
+
+
 
 const Characters = (props) => {
     const { characters } = props;
@@ -11,14 +15,23 @@ const Characters = (props) => {
     // side effect in a component, you want to think about which state and/or props it should
     // sync up with, if any.
 
+
+
+
     return (
         <div>
+            <Header> <h1>STAR WARS</h1></Header>
             {characters.map(person => {
-                return <Character birthYear={person.birth_year} name={person.name} />
+                return <Character birthYear={person.birth_year} name={person.name} films={person.films} homeworld={person.homeworld} starships={person.starships} />
             })}
         </div>
     );
 }
+
+const Header = styled.h3`
+color: #FFE81F;
+font-size: 2rem;
+`
 
 export default Characters;
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import axios from 'axios'
 
@@ -15,6 +15,7 @@ const Character = (props) => {
     const { birthYear, name, films, homeworld } = props;
     const [planet, setPlanet] = useState([])
     const [isClicked, setIsClicked] = useState(false)
+    const [characterPhoto, setCharacterPhoto] = useState([])
 
 
     function setClick() {
@@ -31,10 +32,18 @@ const Character = (props) => {
     // side effect in a component, you want to think about which state and/or props it should
     // sync up with, if any.
 
+    useEffect(() => {
+        axios.get(homeworld)
+            .then(({ data }) => setPlanet(data.name))
+            .catch(err => console.log(err))
+        return () => console.log('Cleaning up')
+    }, [])
 
-    axios.get(homeworld)
-        .then(({ data }) => setPlanet(data.name))
-        .catch(err => console.log(err))
+    // axios.get(`http://intergalacticdb.me/api/characters/BobaFett`)
+    //     .then(res => console.log(res))
+    //     .catch(err => console.log(err))
+
+
 
 
     return (
@@ -46,9 +55,9 @@ const Character = (props) => {
                     <p>HomeWorld: <a target="_blank" href={`https://starwars.fandom.com/wiki/${planet}`}>{planet}</a></p>
                     <p>BirthYear: <a target="_blank" href={`https://starwars.fandom.com/wiki/${yearSetter(birthYear, 2)}`} >{birthYear}</a></p>
                     <ul>
-                        <Header><li>Films</li></Header>
+                        <Films><li>Films</li></Films>
                         {films.map((value, index) => {
-                            return <LiContainer><li key={index}>{value}</li></LiContainer>
+                            return <LiContainer><li key={index}><a target="_blank" href={`https://www.google.com/search?q=${value}`}>{value}</a></li></LiContainer>
                         })}
                         <ButtonContainer><a target="_blank" href={`https://starwars.fandom.com/wiki/${name.split('_')}`} >More Info</a></ButtonContainer>
                     </ul>
@@ -73,17 +82,31 @@ const Container = styled.div`
   margin: 15px auto;
   width:50%;
 `
-const Header = styled.h3`
-cursor: pointer;
-color: #FFE81F;
+const Header = styled.li`
+transition: .3s all;
+&:hover {
+   color:#FFE81F;
+    }
+  }
+color:#FFE81F
+color: white;
+cursor:pointer;
+`
+const Films = styled.h3`
+color:#FFE81F
 `
 const LiContainer = styled.li`
-margin: 1rem 0;`
+margin: 2rem 0;`
 const ButtonContainer = styled.a`
-margin: 10px 0;
+&:hover {
+    color:red;
+     }
+   }
+
+border-radius: 10px;
+padding:10px;
 height:10px;
 width:10px;`
-
 
 export default Character;
 

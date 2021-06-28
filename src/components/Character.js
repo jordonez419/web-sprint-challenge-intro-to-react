@@ -14,6 +14,14 @@ function yearSetter(value, index) {
 const Character = (props) => {
     const { birthYear, name, films, homeworld } = props;
     const [planet, setPlanet] = useState([])
+    const [isClicked, setIsClicked] = useState(false)
+
+
+    function setClick() {
+        setIsClicked(!isClicked)
+    }
+
+
 
 
     // Try to think through what state you'll need for this app before starting. Then build out
@@ -32,23 +40,28 @@ const Character = (props) => {
     return (
         <div>
             <Container>
-                <Header><h3><a target="_blank" href={`https://starwars.fandom.com/wiki/${name.split('_')}`} >{name}</a></h3></Header>
-                <p>HomeWorld: <a target="_blank" href={`https://starwars.fandom.com/wiki/${planet}`} >{planet}</a></p>
-                <p>BirthYear: <a target="_blank" href={`https://starwars.fandom.com/wiki/${yearSetter(birthYear, 2)}`} >{birthYear}</a></p>
-                <ul>
-                    <Header><li>Films</li></Header>
-                    {films.map((value, index) => {
-                        return <LiContainer><li key={index}>{value}</li></LiContainer>
-                    })}
-                </ul>
+                <Header><h3 onClick={setClick}>{name} &#9660; </h3></Header>
+
+                <div className={isClicked ? '' : 'hidden'}>
+                    <p>HomeWorld: <a target="_blank" href={`https://starwars.fandom.com/wiki/${planet}`}>{planet}</a></p>
+                    <p>BirthYear: <a target="_blank" href={`https://starwars.fandom.com/wiki/${yearSetter(birthYear, 2)}`} >{birthYear}</a></p>
+                    <ul>
+                        <Header><li>Films</li></Header>
+                        {films.map((value, index) => {
+                            return <LiContainer><li key={index}>{value}</li></LiContainer>
+                        })}
+                        <ButtonContainer><a target="_blank" href={`https://starwars.fandom.com/wiki/${name.split('_')}`} >More Info</a></ButtonContainer>
+                    </ul>
+                </div>
+
             </Container>
-        </div>
+        </div >
     );
 }
 
 
-
 const Container = styled.div`
+  background-color: black;
   font-family: 'Press Start 2P', cursive;
   color: white;
   border: 2px solid #FFE81F;
@@ -61,10 +74,15 @@ const Container = styled.div`
   width:50%;
 `
 const Header = styled.h3`
-color: white;
+cursor: pointer;
+color: #FFE81F;
 `
 const LiContainer = styled.li`
 margin: 1rem 0;`
+const ButtonContainer = styled.a`
+margin: 10px 0;
+height:10px;
+width:10px;`
 
 
 export default Character;

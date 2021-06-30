@@ -7,7 +7,6 @@ import styled from 'styled-components'
 
 const Characters = (props) => {
     const { characters } = props;
-
     // Try to think through what state you'll need for this app before starting. Then build out
     // the state properties here.
 
@@ -20,10 +19,15 @@ const Characters = (props) => {
 
     return (
         <div>
+            <div id='stars'></div>
+            <div id='stars2'></div>
+            <div id='stars2'></div>
+            <div id='stars3'></div>
             <Header> <h1>STAR WARS</h1></Header>
             {characters.map(person => {
-                return <Character key={person.url} birthYear={person.birth_year} name={person.name} films={person.films} homeworld={person.homeworld} />
+                return <Character key={person.url} birthYear={person.birth_year} name={person.name} films={person.films} homeworld={person.homeworld} height={person.height} hairColor={person.hair_color} eyeColor={person.eye_color} weight={person.mass} />
             })}
+
         </div>
     );
 }

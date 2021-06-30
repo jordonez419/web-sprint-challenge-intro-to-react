@@ -9,14 +9,23 @@ function yearSetter(value, index) {
     return value.substring(0, splitPoint) + "_" + value.substring(splitPoint);
 }
 
+function kgToPounds(kg) {
+    return Math.floor(kg * 2.205);
+}
+
+function cmToFeet(cm) {
+    let realFeet = ((cm * 0.393700) / 12);
+    let feet = Math.floor(realFeet);
+    let inches = Math.round((realFeet - feet) * 12);
+    return `${feet} Foot ${inches} Inches`
+}
+
 
 
 const Character = (props) => {
-    const { birthYear, name, films, homeworld } = props;
+    const { birthYear, name, films, homeworld, height, hairColor, eyeColor, weight } = props;
     const [planet, setPlanet] = useState([])
     const [isClicked, setIsClicked] = useState(false)
-    const [characterPhoto, setCharacterPhoto] = useState([])
-
 
     function setClick() {
         setIsClicked(!isClicked)
@@ -39,12 +48,6 @@ const Character = (props) => {
         return () => console.log('Cleaning up')
     }, [])
 
-    // axios.get(`http://intergalacticdb.me/api/characters/BobaFett`)
-    //     .then(res => console.log(res))
-    //     .catch(err => console.log(err))
-
-
-
 
     return (
         <div>
@@ -52,6 +55,10 @@ const Character = (props) => {
                 <Header><h3 onClick={setClick}>{name} &#9660; </h3></Header>
 
                 <div className={isClicked ? '' : 'hidden'}>
+                    <p>Height: {height} Cm</p>
+                    <p>Weight {weight} Kg</p>
+                    <p>Hair Color: {hairColor}</p>
+                    <p>Eye Color: {eyeColor}</p>
                     <p>HomeWorld: <a target="_blank" href={`https://starwars.fandom.com/wiki/${planet}`}>{planet}</a></p>
                     <p>BirthYear: <a target="_blank" href={`https://starwars.fandom.com/wiki/${yearSetter(birthYear, 2)}`} >{birthYear}</a></p>
                     <ul>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios'
 import Characters from './components/Characters';
+import Planets from './components/Planets';
 
 
 const App = () => {
@@ -12,8 +13,8 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
-
   const [characters, setCharacters] = useState([])
+  const [planets, setPlanets] = useState([])
 
   useEffect(() => {
     axios.get(`https://swapi.dev/api/people`)
@@ -22,10 +23,17 @@ const App = () => {
     return () => console.log('Cleaning up')
   }, [])
 
+  useEffect(() => {
+    axios.get(`https://swapi.dev/api/planets`)
+      .then(({ data }) => setPlanets(data.results))
+      .catch(err => console.log(err))
+    return () => console.log('Cleaning up')
+  }, [])
+
   return (
     <div className="App">
       <Characters characters={characters} />
-
+      <Planets planets={planets} />
     </div >
   );
 }

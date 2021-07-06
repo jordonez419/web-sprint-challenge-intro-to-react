@@ -29,16 +29,20 @@ const Films = (props) => {
     );
 }
 
+const Flex = styled.h1`
+display:flex;
+flex-wrap:wrap;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+`
+
 const Header = styled.h1`
 color: #FFE81F;
 font-size: 2rem;
 `
-const Flex = styled.h1`
-display:flex;
-flex-wrap:wrap;
-`
 const HoverHeader = styled.h1`
-margin:5rem;
+// margin:5rem;
 font-family: 'Press Start 2P', cursive;
 color: white;
 font-size: 1rem;

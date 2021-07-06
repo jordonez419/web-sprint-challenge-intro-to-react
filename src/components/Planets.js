@@ -36,6 +36,7 @@ const Planets = (props) => {
     );
 }
 
+
 const Header = styled.h1`
 color: #FFE81F;
 font-size: 2rem;

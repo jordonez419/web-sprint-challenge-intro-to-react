@@ -42,7 +42,8 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   margin: 15px auto;
-  width:50%;
+  width: 30rem;
+  font-size:1.2rem;
 `
 const Header = styled.li`
 transition: .3s all;

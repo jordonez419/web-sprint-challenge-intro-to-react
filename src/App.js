@@ -4,6 +4,7 @@ import axios from 'axios'
 import Characters from './components/Characters';
 import Planets from './components/Planets';
 import Films from './components/Films';
+import styled from 'styled-components'
 
 
 const App = () => {
@@ -42,11 +43,34 @@ const App = () => {
 
   return (
     <div className="App">
-      <Characters characters={characters} />
-      <Planets planets={planets} />
-      <Films films={films} />
+      <Header> <h1>STAR WARS</h1></Header>
+      <Flex>
+        <FlexItem1><Characters characters={characters} /></FlexItem1>
+        <FlexItem2> <Planets planets={planets} /></FlexItem2>
+        <FlexItem3> <Films films={films} /></FlexItem3>
+      </Flex>
     </div >
   );
 }
+
+const Flex = styled.h1`
+display:flex;
+justify-content:space-between;
+align-items:space-between;
+`
+const FlexItem1 = styled.h1`
+margin-left:5rem;
+`
+const FlexItem2 = styled.h1`
+margin-top:3.15rem;
+`
+const FlexItem3 = styled.h1`
+margin-right:5rem;
+margin-top: 3.15rem;
+`
+const Header = styled.h1`
+color: #FFE81F;
+font-size: 2rem;
+`
 
 export default App;

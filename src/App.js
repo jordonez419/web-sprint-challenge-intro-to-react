@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios'
 import Characters from './components/Characters';
 import Planets from './components/Planets';
+import Films from './components/Films';
 
 
 const App = () => {
@@ -15,6 +16,15 @@ const App = () => {
 
   const [characters, setCharacters] = useState([])
   const [planets, setPlanets] = useState([])
+  const [films, setFilms] = useState([])
+
+  useEffect(() => {
+    axios.get(`https://swapi.dev/api/films`)
+      .then(({ data }) => setFilms(data.results))
+      .catch(err => console.log(err))
+    return () => console.log('Cleaning up')
+  }, [])
+
 
   useEffect(() => {
     axios.get(`https://swapi.dev/api/people`)
@@ -34,6 +44,7 @@ const App = () => {
     <div className="App">
       <Characters characters={characters} />
       <Planets planets={planets} />
+      <Films films={films} />
     </div >
   );
 }

@@ -40,9 +40,10 @@ const Characters = (props) => {
             <div id='stars2'></div>
             <div id='stars3'></div>
             <Header> <h1>STAR WARS</h1></Header>
-            <Header> <h1 onClick={setClick}>Characters </h1></Header>
+            <HoverHeader> <h1 onClick={setClick}>Characters </h1></HoverHeader>
             {isClicked ? characters.map(person => {
-                return <Character key={person.url} birthYear={person.birth_year} name={person.name} films={person.films} homeworld={person.homeworld} height={person.height} hairColor={person.hair_color} eyeColor={person.eye_color} weight={person.mass} />
+                return <Character key={person.url} birthYear={person.birth_year} name={person.name} films={person.films}
+                    homeworld={person.homeworld} height={person.height} hairColor={person.hair_color} eyeColor={person.eye_color} weight={person.mass} />
             }) : ''}
 
         </div>
@@ -52,6 +53,20 @@ const Characters = (props) => {
 const Header = styled.h1`
 color: #FFE81F;
 font-size: 2rem;
+`
+const Flex = styled.h1`
+display:flex;
+flex-wrap:wrap;
+`
+const HoverHeader = styled.h1`
+margin:5rem;
+font-family: 'Press Start 2P', cursive;
+color: white;
+font-size: 1rem;
+&:hover {
+    color: #234DB8;
+    cursor:pointer;
+  }
 `
 
 export default Characters;

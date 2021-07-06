@@ -51,6 +51,7 @@ const Character = (props) => {
 
     return (
         <div>
+            {/* <Flex> */}
             <Container>
                 <Header><h3 onClick={setClick}>{name} &#9660; </h3></Header>
 
@@ -71,6 +72,7 @@ const Character = (props) => {
                 </div>
 
             </Container>
+            {/* </Flex> */}
         </div >
     );
 }
@@ -89,6 +91,11 @@ const Container = styled.div`
   margin: 15px auto;
   width:50%;
 `
+// const Flex = styled.div`
+// display:flex;
+// flex-direction:column
+// flex-wrap: nowrap;
+// `
 const Header = styled.li`
 transition: .3s all;
 &:hover {
